@@ -52,8 +52,19 @@
   users.users.usr1 = {
     isNormalUser = true;
     description = "usr1";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    extraGroups = [ "networkmanager" "wheel" "docker"];
+    packages = with pkgs; [
+	firefox
+	neovim
+	vimPlugins.LazyVim
+	];
+  };
+
+  # Enable docker
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+	enable=true;
+	setSocketVariable=true;
   };
 
   # Allow unfree packages
