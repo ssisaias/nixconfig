@@ -55,6 +55,7 @@
     extraGroups = [ "networkmanager" "wheel" "docker"];
     packages = with pkgs; [
 	firefox
+  nerdfonts
 	neovim
 	vimPlugins.LazyVim
 	];
@@ -82,6 +83,8 @@
 	git
 	zip
 	unzip
+	feh
+	arandr
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
