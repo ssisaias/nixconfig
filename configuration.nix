@@ -55,11 +55,23 @@
     extraGroups = [ "networkmanager" "wheel" "docker"];
     packages = with pkgs; [
 	firefox
-  nerdfonts
+  
 	neovim
 	vimPlugins.LazyVim
 	];
   };
+
+  #fontDir ($HOME/.local/share/fonts)
+  fonts.fontDir.enable = true;
+  #additional fonts
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" "FiraMono" "Noto" ]; })
+    fira-code
+    fira-code-symbols
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+  ];
 
   # Enable docker
   virtualisation.docker.enable = true;
