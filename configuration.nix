@@ -11,8 +11,13 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = { 
+    systemd-boot.enable = true;
+    systemd-boot.configurationLimit = 20;
+    systemd-boot.consoleMode = "auto";
+    efi.canTouchEfiVariables = true;
+    timeout = 5;
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -55,7 +60,7 @@
     extraGroups = [ "networkmanager" "wheel" "docker"];
     packages = with pkgs; [
 	firefox
-  
+  brave
 	neovim
 	vimPlugins.LazyVim
 	];
@@ -97,6 +102,7 @@
 	unzip
 	feh
 	arandr
+  xclip
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
